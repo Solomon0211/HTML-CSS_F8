@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div>
+        <div onclick="showSuccessToast()" class="btn btn--success">Success</div>
+        <div onclick="showErorrToast()"class="btn btn--danger">Danger</div>
+        <div onclick="showInfoToast()"class="btn btn--info">Info</div>
+        <div onclick="showWarningToast()"class="btn btn--warn">Warning</div>
+    </div>
+
+    <!-- Success -->
+    <div id="toast"></div>
+
+    <!-- <script>
+        const btns = document.querySelectorAll('.btn')
+
+        const toast = document.querySelector('.toast--success')
+
+
+        function openToast() {
+
+            toast.classList.add('open')
+            console.log("Bắt đầu chờ 3 giây...");
+
+            $('p').slideUp(200).delay(5000).fadeIn(400)
+            toast.classList.remove('open')
+        }
+
+        function isClick(){
+            console.log('click')
+            
+        }
+
+        for (const btn of btns) {
+            btn.addEventListener('click', openToast)
+        }
+
+    </script> -->
+    
+  
+    <script>
+        function toast({title = '', massage = '',  type = 'info', duration = 1000 }) {
+           
+            // lấy id của toast để sử dụng
+            const main = document.getElementById('toast')
+            if (main) {
+
+                //tạo ra 1 thẻ div để chưa thẻ và thẻ này là thẻ modifier
+                const toast = document.createElement('div')
+                // Auto remove toast
+                const autoRemoveId =  setTimeout(function(){
+                    main.removeChild('toast')
+                },duration +1000)
+
+                // remove toast when click
+                toast.onclick = function(e){
+                    //toast__close
+                    if(e.target.closest('toast'))
+                    {
+                        main.removeChild('toast')
+                        clearTimeout(autoRemoveId)
+                    }
+                }
+
+                // chưa icon của các thông báo
+                const icons = {
+                    success: 'fa-solid fa-circle-check',
+                    info: 'fa-solid fa-circle-info',
+                    warning: 'fa-solid fa-triangle-exclamation',
+                    error: 'fa-solid fa-circle-xmark',
+                }
+
+                const icon = icons[type]
+                //thời gian dela animation
+                const delay = (duration/1000).toFixed(2)
+                toast.style.animation = `slideInLeft  ease .3s, fadeOut linear 1s ${delay}s forwards`
+                
+                toast.classList.add('toast', `toast--${type}`)
+                toast.innerHTML = `
+                        <div class="toast__icon">
+                            <i class="${icon}"></i>
+                        </div>
+                        <div class="toast__body">
+                            <h3 class="toast__title">${title}</h3>
+                            <p class="toast__msg">${massage}</p>
+                        </div>
+                        <div class="toast__close"><i class="fa-solid fa-xmark"></i></div>   
+                    
+                        `        
+                    //  thêm vào cuối danh sách của một phần tử DOM                                                    
+                    main.appendChild(toast)    
+
+                
+            }
+        }
+        function showSuccessToast(){
+            toast({
+                title: 'Success',
+                massage: 'Bạn đã đăng kí tài khoản thành công',
+                type: 'success',
+                duration: 5000
+            })
+        }
+        function showInfoToast(){
+            toast({
+                title: 'Info',
+                massage: 'Hiển thị thành công thông tin của bạn',
+                type: 'info',
+                duration: 5000
+            })
+        }
+
+        function showWarningToast(){
+            toast({
+                title: 'Warning',
+                massage: 'Vui lòng liên hệ quản trị viên!',
+                type: 'warning',
+                duration: 5000
+            })
+        }
+        
+        function showErorrToast(){
+            toast({
+                title: 'Erorr',
+                massage: 'Nhấn vào đây sẽ hiện lỗi !!!',
+                type: 'error',
+                duration: 5000
+            })
+        }
+
+    </script>
+
+
+</body>
+
+</html>

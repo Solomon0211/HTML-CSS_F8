@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body > div {
+    margin: auto;
+}
+
+.label{
+    width: 260px;
+    font-size: 25px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    padding: 20px 30px;
+
+}
+
+.label .label--error{
+    color: rgb(239, 62, 53);
+}
+
+.label--error .label__icon--error{
+    font-size: 100px;
+    margin: 20px 0;
+  
+}
+
+
+.label__message  {
+
+
+}   
+
+.label__message-header{
+    padding: 10px 0;
+
+}
+
+.label__message-content{
+    color: #ccc;  
+    padding: 10px 0;
+
+}
+
+.label__btn{
+    margin: 20px 0;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: rgb(239, 62, 53);
+    border-radius: 30px;
+
+}
