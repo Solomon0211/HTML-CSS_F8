@@ -1,0 +1,70 @@
+/* mobie */
+@media only screen and ( max-width : 46.1875rem)
+{
+    
+    .main__product-img{
+        width: 95%;
+        padding-top: 85%;
+    }
+
+    .column-layout__category{
+        display: none;
+    }
+
+    .column-item{
+        width: 100%;
+    }
+
+    .column-layout__container{
+        width: 100%;
+        text-align: center;
+    }
+
+    .feature-layout{
+        flex-direction: column;
+    }
+
+    .feature-item{
+        text-align: center;
+    }
+}
+
+
+
+
+/* Tablet */
+@media only screen and ( min-width : 46.25rem ) and (max-width : 63.9375rem){
+
+    .main__product-img{
+        width: 85%;
+        padding-top: 85%;
+    }
+
+    .column-item{
+        width: 33.333%;
+    }
+
+    
+
+}
+
+
+/* mobie and tablet */
+@media only screen and (max-width : 63.9375rem)   {
+    .main__product{
+        flex-direction: column-reverse;
+
+    }
+
+    .main__product-info{
+        width: 100%;
+    }
+    .main__product-desc{
+        display: none;
+    }
+   
+}
+/* PC */
+@media only screen and ( min-width: 64rem){
+    
+}
